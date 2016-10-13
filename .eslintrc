@@ -1,0 +1,6 @@
+---
+extends:
+  - "formidable/configurations/es5-node"
+
+rules:
+  consistent-return: ["error", { "treatUndefinedAsUnspecified": true }]
