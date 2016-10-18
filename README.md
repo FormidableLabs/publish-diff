@@ -27,24 +27,44 @@ Install this package as a global dependency.
 $ npm install -g publish-diff
 ```
 
-Show help, version:
-
-```sh
-$ publish-diff -h
-$ publish-diff -v
-```
-
 ## Usage
 
-The most basic default case is to compare the `latest` published version of a
+The basics:
+
+
+```
+  Usage: publish-diff [options]
+
+  Preview npm publish changes.
+
+  Options:
+
+    -h, --help           output usage information
+    -V, --version        output the version number
+    -o, --old <package>  Old package to diff (default `<package>@latest`)
+    -n, --new <package>  New package to diff (default `process.cwd()`)
+
+  Examples:
+
+    # Compare (old) npm registry `latest` version vs. (new) local `process.cwd()`
+    $ publish-diff
+
+    # Compare (old) npm version vs. (new) latest npm version
+    $ publish-diff -o rowdy@0.4.0 -n rowdy@latest
+
+    # Compare (old) git tag/hash vs. (new) git tag/hash
+    $ publish-diff -o FormidableLabs/rowdy#v0.4.0 -n FormidableLabs/rowdy#v0.5.0
+```
+
+### Local Diffs
+
+The most common case is to compare the `latest` published version of a
 package (old) against the current working directory (new). In this case,
 `publish-diff` will infer the package's `name` from the `package.json` file.
 
 ```sh
 $ publish-diff
 ```
-
-### Local Diffs
 
 The script takes `-o|--old` and `-n|--new` values to determine what to diff.
 
