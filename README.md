@@ -43,6 +43,7 @@ The basics:
     -V, --version        output the version number
     -o, --old <package>  Old package to diff (default `<package>@latest`)
     -n, --new <package>  New package to diff (default `process.cwd()`)
+    --no-colors          Disable colors in the outputted diff
 
   Examples:
 

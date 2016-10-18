@@ -5,6 +5,8 @@ var opts = require("../lib/args").parse();
 var pubDiff = require("../lib/index").diff;
 var colorDiff = require("../lib/util").colorDiff;
 
+var identity = function (x) { return x; };
+
 pubDiff(opts, function (err, results) {
   if (err) {
     console.error(err.stack || err); // eslint-disable-line no-console
@@ -16,9 +18,9 @@ pubDiff(opts, function (err, results) {
     // Convert to just text values
     .map(function (k) { return results.diff[k]; })
     // Keep non-empty diffs
-    .filter(function (d) { return d; })
+    .filter(identity)
     // Colorize
-    .map(colorDiff)
+    .map(opts.colors ? colorDiff : identity)
     // Convert to string
     .join("\n");
 
