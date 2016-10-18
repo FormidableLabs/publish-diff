@@ -24,6 +24,22 @@ $ npm install -g publish-diff
 
 ## Usage
 
+```
+ Usage: publish-diff [options]
+
+  Preview npm publish changes.
+
+  Options:
+
+    -h, --help     output usage information
+    -V, --version  output the version number
+
+  Examples:
+
+    # Compare npm registry `latest` version vs local `./package.json`
+    $ publish-diff
+```
+
 <!-- TODO: BASIC -->
 <!-- TODO: Note: doesn't matter git state, it's what will **actually* be published.
      This is what you want to check.
