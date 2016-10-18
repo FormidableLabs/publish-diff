@@ -7,6 +7,11 @@ History
 * XXX
 -->
 
+## 0.2.0
+
+* Add --no-colors flag for disabling color in output.
+  [#3](https://github.com/FormidableLabs/publish-diff/issues/3)
+
 ## 0.1.1
 
 * Fix missing `package.json:bin` entry.
