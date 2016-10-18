@@ -6,7 +6,7 @@ Publish Diff
 
 View diffs of what you _will_ publish to `npm` **before** you really do!
 
-Publishing a package from a a local repository runs the risk of last minute
+Publishing a package from a local repository runs the risk of last minute
 human mistakes like:
 
 - deletions
@@ -102,7 +102,7 @@ Under the hood, `publish-diff` relies on the amazingly flexible
 [`npm pack`](https://docs.npmjs.com/cli/pack) to create the "real deal" version
 of a package that is already / will be published. This also gives us some extra
 flexibility in specifying the old and new packages to compare against as
-`publish-diff` permits the passing `-o` and `-n` arguments with any value that
+`publish-diff` permits passing the `-o` and `-n` arguments with any value that
 would otherwise be permissible to `npm pack`.
 
 This means you can view remote differences across already published versions of
@@ -152,7 +152,7 @@ After publishing, the following tasks run if found:
 - `publish`
 - `postpublish`
 
-If a project uses an `npm version` workflow to control versioning of git source
+If a project uses an `npm version` workflow to control versioning of git source it
 will invoke the following `package.json` tasks if found:
 
 - `preversion`
@@ -163,7 +163,7 @@ After versioning, the following task is run if found:
 - `postversion`
 
 Translating this to `publish-diff`, if you want to simulate what will actually
-be published a more accurate command line sequence would be:
+be published, a more accurate command line sequence would be:
 
 ```sh
 $ npm run prepublish && \
