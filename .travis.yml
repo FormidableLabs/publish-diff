@@ -22,4 +22,4 @@ before_install:
 script:
   - node --version
   - npm --version
-  - npm test
+  - "[[ `node --version` > 'v4.'* ]] && npm run lint || echo \"Skipping lint for Node $(node --version)\""
