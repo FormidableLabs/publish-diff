@@ -1,5 +1,5 @@
-<!--[![Travis Status][trav_img]][trav_site]
-[![Coverage Status][cov_img]][cov_site]-->
+[![Travis Status][trav_img]][trav_site]
+<!--[![Coverage Status][cov_img]][cov_site]-->
 
 Publish Diff
 ============
