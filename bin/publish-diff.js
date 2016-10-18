@@ -3,6 +3,7 @@
 
 var opts = require("../lib/args").parse();
 var pubDiff = require("../lib/index").diff;
+var colorDiff = require("../lib/util").colorDiff;
 
 pubDiff(opts, function (err, results) {
   if (err) {
@@ -16,6 +17,8 @@ pubDiff(opts, function (err, results) {
     .map(function (k) { return results.diff[k]; })
     // Keep non-empty diffs
     .filter(function (d) { return d; })
+    // Colorize
+    .map(colorDiff)
     // Convert to string
     .join("\n");
 
