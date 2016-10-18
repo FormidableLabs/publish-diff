@@ -1,6 +1,6 @@
 {
   "name": "publish-diff",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Preview npm publish changes.",
   "main": "lib/index.js",
   "scripts": {

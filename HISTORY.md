@@ -7,7 +7,7 @@ History
 * XXX
 -->
 
-## Unreleased
+## 0.1.0
 
 * Add `-o|--old` and `-n|--new` command line options.
   [#1](https://github.com/FormidableLabs/publish-diff/issues/1)
