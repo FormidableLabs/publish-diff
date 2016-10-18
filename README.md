@@ -44,57 +44,74 @@ package (old) against the current working directory (new). In this case,
 $ publish-diff
 ```
 
-The script takes `--old` and `--new` values to determine what to diff. For a
-package `foo` already published to the `npm` registry the default case expands
-to:
+### Local Diffs
+
+The script takes `-o|--old` and `-n|--new` values to determine what to diff.
+
+* `-n|--new`: Defaults to current working directory (`process.cwd()`) in the
+  local filesystem. This assumes the common case of publishing a new version
+  from your machine.
+* `-o|--old`: Defaults to the `package.json:name` of the package extracted from
+  the `--new` argument at its latest version in the `npm` registry.
+
+For a package `<pkg>` already published to the `npm` registry the default case
+expands to:
 
 ```sh
-$ publish-diff --old <local cwd> --new <latest npm version>
+$ publish-diff -o <local cwd> -n <latest npm version>
 
 # Diff local version vs latest on npm registry
 $ publish-diff
-$ publish-diff --old .
-$ publish-diff --old . --new foo
-$ publish-diff --new foo
+$ publish-diff -n .
+$ publish-diff -o <pkg>@latest -n .
+$ publish-diff -o <pkg>@latest
 
 # Diff local version vs tag or old version
-$ publish-diff --new foo@beta
-$ publish-diff --new foo@1.2.3
+$ publish-diff -o <pkg>@beta
+$ publish-diff -o <pkg>@1.2.3
+
+# Diff local version vs other local version
+$ publish-diff -o /path/to/some-version
+$ publish-diff -o /path/to/some-version -n .
+$ publish-diff -o /path/to/some-version -n /path/to/other-version
 ```
 
-If a `--new` argument is not provided, `publish-diff` will gather the name of
-the package from `package.json:name` of the `--old` package and use that. This
-conveniently means you can view remote differences across already published
-versions of packages without needing a local checkout:
+### Remote Diffs
 
-```sh
-$ publish-diff --old <npm name + version>
-$ publish-diff --old <npm name + version> --new <npm name + version>
-
-# Diff old version vs. latest on npm registry
-$ publish-diff --old radium@0.17.2
-$ publish-diff --old radium@0.17.2 --new radium@latest
-
-# Diff two old versions on npm registry
-$ publish-diff --old radium@0.17.2 --new radium@0.18.0
-```
-
-Diving in a little more, `publish-diff` relies on the amazingly flexible
+Under the hood, `publish-diff` relies on the amazingly flexible
 [`npm pack`](https://docs.npmjs.com/cli/pack) to create the "real deal" version
 of a package that is already / will be published. This also gives us some extra
 flexibility in specifying the old and new packages to compare against as
-`publish-diff` permits the passing `--old` and `--new` arguments with any value
-that would otherwise be permissible to `npm pack`.
+`publish-diff` permits the passing `-o` and `-n` arguments with any value that
+would otherwise be permissible to `npm pack`.
+
+This means you can view remote differences across already published versions of
+packages without needing a local checkout:
+
+```sh
+$ publish-diff -n <npm name + version>
+$ publish-diff -o <npm name + version> -n <npm name + version>
+
+# Diff old version vs. latest on npm registry
+$ publish-diff -o rowdy@0.4.0   -n rowdy@latest
+$ publish-diff -o radium@0.17.2 -n radium
+
+# Diff two old versions on npm registry
+$ publish-diff -o rowdy@0.4.0   -n rowdy@0.5.0
+$ publish-diff -o radium@0.17.2 -n radium@0.18.0
+```
+
+And you can do the same with git versions:
 
 ```sh
 # Diff git tag/hash vs latest on npm registry
-$ publish-diff --old FormidableLabs/rowdy#v0.4.0
-$ publish-diff --old FormidableLabs/rowdy#504735c
-$ publish-diff --old FormidableLabs/rowdy#v0.4.0 --new rowdy@latest
+$ publish-diff -o FormidableLabs/rowdy#v0.4.0  -n rowdy
+$ publish-diff -o FormidableLabs/rowdy#504735c -n rowdy@latest
+$ publish-diff -o FormidableLabs/rowdy#v0.4.0  -n rowdy@latest
 
 # Diff two old versions from git tag/hash
-$ publish-diff --old FormidableLabs/rowdy#v0.4.0 --new FormidableLabs/rowdy#v0.5.0
-$ publish-diff --old FormidableLabs/rowdy#504735c --new FormidableLabs/rowdy#fe25a22
+$ publish-diff -o FormidableLabs/rowdy#v0.4.0  -n FormidableLabs/rowdy#v0.5.0
+$ publish-diff -o FormidableLabs/rowdy#504735c -n FormidableLabs/rowdy#fe25a22
 ```
 
 Note that when doing local / git-based comparisons that portions of the `npm`
