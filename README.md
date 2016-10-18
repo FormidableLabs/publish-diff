@@ -4,15 +4,20 @@
 Publish Diff
 ============
 
-View diffs of what you _will_ publish `npm` before you really do!
+View diffs of what you _will_ publish to `npm` **before** you really do!
 
-The motivation here is that when you publish from a local checkout of a project
-unintended / uncommitted / extra file changes can creep into the ultimately
-published package, creating confusion and heartache.
+Publishing a package from a a local repository runs the risk of last minute
+human mistakes like:
 
-`publish-diff` offers an opportunity to see what you're _going_ to publish
-**before you actually do** as a convenient, git-style diff against the `npm`
-registry.
+- deletions
+- mutations
+- additions
+
+to the files sent to the `npm` registry.
+
+`publish-diff` offers the piece of mind that you will publish exactly what you
+intend to publish with convenient, **git-style diffs** against the `npm`
+registry from your local project.
 
 ## Installation
 
