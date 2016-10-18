@@ -25,7 +25,7 @@ $ npm install -g publish-diff
 ## Usage
 
 ```
- Usage: publish-diff [options]
+  Usage: publish-diff [options]
 
   Preview npm publish changes.
 
