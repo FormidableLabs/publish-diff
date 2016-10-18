@@ -51,7 +51,15 @@ to:
 ```sh
 $ publish-diff --old <local cwd> --new <latest npm version>
 
+# Diff local version vs latest on npm registry
+$ publish-diff
+$ publish-diff --old .
 $ publish-diff --old . --new foo
+$ publish-diff --new foo
+
+# Diff local version vs tag or old version
+$ publish-diff --new foo@beta
+$ publish-diff --new foo@1.2.3
 ```
 
 If a `--new` argument is not provided, `publish-diff` will gather the name of
