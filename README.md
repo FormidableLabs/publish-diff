@@ -44,6 +44,55 @@ package (old) against the current working directory (new). In this case,
 $ publish-diff
 ```
 
+The script takes `--old` and `--new` values to determine what to diff. For a
+package `foo` already published to the `npm` registry the default case expands
+to:
+
+```sh
+$ publish-diff --old <local cwd> --new <latest npm version>
+
+$ publish-diff --old . --new foo
+```
+
+If a `--new` argument is not provided, `publish-diff` will gather the name of
+the package from `package.json:name` of the `--old` package and use that. This
+conveniently means you can view remote differences across already published
+versions of packages without needing a local checkout:
+
+```sh
+$ publish-diff --old <npm name + version>
+$ publish-diff --old <npm name + version> --new <npm name + version>
+
+# Diff old version vs. latest on npm registry
+$ publish-diff --old radium@0.17.2
+$ publish-diff --old radium@0.17.2 --new radium@latest
+
+# Diff two old versions on npm registry
+$ publish-diff --old radium@0.17.2 --new radium@0.18.0
+```
+
+Diving in a little more, `publish-diff` relies on the amazingly flexible
+[`npm pack`](https://docs.npmjs.com/cli/pack) to create the "real deal" version
+of a package that is already / will be published. This also gives us some extra
+flexibility in specifying the old and new packages to compare against as
+`publish-diff` permits the passing `--old` and `--new` arguments with any value
+that would otherwise be permissible to `npm pack`.
+
+```sh
+# Diff git tag/hash vs latest on npm registry
+$ publish-diff --old FormidableLabs/rowdy#v0.4.0
+$ publish-diff --old FormidableLabs/rowdy#504735c
+$ publish-diff --old FormidableLabs/rowdy#v0.4.0 --new rowdy@latest
+
+# Diff two old versions from git tag/hash
+$ publish-diff --old FormidableLabs/rowdy#v0.4.0 --new FormidableLabs/rowdy#v0.5.0
+$ publish-diff --old FormidableLabs/rowdy#504735c --new FormidableLabs/rowdy#fe25a22
+```
+
+Note that when doing local / git-based comparisons that portions of the `npm`
+publish / version lifecycles may be missing and you may need to manually
+approximate this (discussed in detail in the next section).
+
 ### npm Lifecycle Complexities
 
 One complexity that comes up frequently is `npm` lifecycle events that occur
