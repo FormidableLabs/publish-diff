@@ -18,7 +18,7 @@ pubDiff(opts, function (err, results) {
     // Convert to just text values
     .map(function (k) { return results.diff[k]; })
     // Keep non-empty diffs
-    .filter(function (d) { return d; })
+    .filter(identity)
     // Colorize
     .map(opts.colors ? colorDiff : identity)
     // Convert to string
