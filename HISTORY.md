@@ -7,6 +7,10 @@ History
 * XXX
 -->
 
+## 0.1.1
+
+* Fix missing `package.json:bin` entry.
+
 ## 0.1.0
 
 * Add `-o|--old` and `-n|--new` command line options.

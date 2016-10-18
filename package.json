@@ -1,6 +1,6 @@
 {
   "name": "publish-diff",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Preview npm publish changes.",
   "main": "lib/index.js",
   "scripts": {
@@ -14,11 +14,8 @@
   ],
   "author": "Ryan Roemer <ryan.roemer@formidable.com>",
   "license": "MIT",
-  "devDependencies": {
-    "eslint": "^2.13.1",
-    "eslint-config-formidable": "^2.0.1",
-    "eslint-plugin-filenames": "^1.1.0",
-    "eslint-plugin-import": "^2.0.1"
+  "bin": {
+    "publish-diff": "bin/publish-diff.js"
   },
   "dependencies": {
     "async": "^2.1.1",
@@ -30,5 +27,11 @@
     "recursive-readdir": "^2.1.0",
     "tar": "^2.2.1",
     "temp": "^0.8.3"
+  },
+  "devDependencies": {
+    "eslint": "^2.13.1",
+    "eslint-config-formidable": "^2.0.1",
+    "eslint-plugin-filenames": "^1.1.0",
+    "eslint-plugin-import": "^2.0.1"
   }
 }
