@@ -7,6 +7,11 @@ History
 * XXX
 -->
 
+## 0.3.0
+
+* Add --registry CLI option and resolving .npmrc as a fallback. (**[@joelday][]**)
+  [#8](https://github.com/FormidableLabs/publish-diff/pull/8)
+
 ## 0.2.0
 
 * Add --no-colors flag for disabling color in output.
@@ -27,4 +32,5 @@ History
 
 * Initial release.
 
+[@joelday]: https://github.com/joelday
 [@ryan-roemer]: https://github.com/ryan-roemer
