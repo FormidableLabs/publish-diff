@@ -7,6 +7,13 @@ History
 * XXX
 -->
 
+## Unreleased
+
+* Expand any module names starting with `.`, `/`, or OS-specific path slash to
+  full absolute path to simulate `npm pack`-ing in CWD.
+* Copy `.npmrc` from expected `npm` paths to temp directory.
+  [#9](https://github.com/FormidableLabs/publish-diff/pull/9)
+
 ## 0.3.0
 
 * Add --registry CLI option and resolving .npmrc as a fallback. (**[@joelday][]**)
