@@ -24,7 +24,6 @@
     "diff": "^3.0.1",
     "file-type": "^3.8.0",
     "isbinaryfile": "^3.0.1",
-    "rc": "^1.1.6",
     "recursive-readdir": "^2.1.0",
     "tar": "^2.2.1",
     "temp": "^0.8.3"

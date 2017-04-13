@@ -39,11 +39,12 @@ The basics:
 
   Options:
 
-    -h, --help           output usage information
-    -V, --version        output the version number
-    -o, --old <package>  Old package to diff (default `<package>@latest`)
-    -n, --new <package>  New package to diff (default `process.cwd()`)
-    --no-colors          Disable colors in the outputted diff
+    -h, --help                 output usage information
+    -V, --version              output the version number
+    -o, --old <package>        Old package to diff (default `<package>@latest`)
+    -n, --new <package>        New package to diff (default `process.cwd()`)
+    -r, --registry <registry>  The npm registry to diff the package against
+    --no-colors                Disable colors in the outputted diff
 
   Examples:
 
@@ -189,6 +190,25 @@ $ npm run preversion && \
 Similar to `publish`, you would not want to run `npm run version` because it
 has side effects -- in this case, mutating the git state of your project.
 Projects with an actual `package.json:version` script would need manual cleanup.
+
+## Notes
+
+### `.npmrc` Files
+
+`publish-diff` follows the `npm` rules for searching for `.npmrc` files --
+https://docs.npmjs.com/files/npmrc#files -- which approximates to:
+
+- `${process.cwd()}.npmrc`
+- `~/.npmrc`
+- `$NODE_GLOBAL_PATH/etc/npmrc`
+- `$SYSTEM_PATH/npm/npmrc`
+
+`publish-diff` shells to `npm pack` which will out-of-the-box work with all but
+the first of these rc file locations. The complexity is that for the actual
+`npm pack` command, `publish-diff` creates and switches to a temporary
+directory. To compensate for this behavior, if a `${process.cwd()}.npmrc` file
+is found, that is _also_ copied to the temporary directory before initiating
+any underlying `npm` commands.
 
 [trav_img]: https://api.travis-ci.org/FormidableLabs/publish-diff.svg
 [trav_site]: https://travis-ci.org/FormidableLabs/publish-diff
