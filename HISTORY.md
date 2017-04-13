@@ -7,7 +7,7 @@ History
 * XXX
 -->
 
-## Unreleased
+## 0.4.0
 
 * Expand any module names starting with `.`, `/`, or OS-specific path slash to
   full absolute path to simulate `npm pack`-ing in CWD.

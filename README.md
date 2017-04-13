@@ -154,8 +154,8 @@ After publishing, the following tasks run if found:
 - `publish`
 - `postpublish`
 
-If a project uses an `npm version` workflow to control versioning of git source it
-will invoke the following `package.json` tasks if found:
+If a project uses an `npm version` workflow to control versioning of git source
+it will invoke the following `package.json` tasks if found:
 
 - `preversion`
 - `version`
@@ -198,7 +198,7 @@ Projects with an actual `package.json:version` script would need manual cleanup.
 `publish-diff` follows the `npm` rules for searching for `.npmrc` files --
 https://docs.npmjs.com/files/npmrc#files -- which approximates to:
 
-- `${process.cwd()}.npmrc`
+- `${process.cwd()}/.npmrc`
 - `~/.npmrc`
 - `$NODE_GLOBAL_PATH/etc/npmrc`
 - `$SYSTEM_PATH/npm/npmrc`
@@ -206,7 +206,7 @@ https://docs.npmjs.com/files/npmrc#files -- which approximates to:
 `publish-diff` shells to `npm pack` which will out-of-the-box work with all but
 the first of these rc file locations. The complexity is that for the actual
 `npm pack` command, `publish-diff` creates and switches to a temporary
-directory. To compensate for this behavior, if a `${process.cwd()}.npmrc` file
+directory. To compensate for this behavior, if a `${process.cwd()}/.npmrc` file
 is found, that is _also_ copied to the temporary directory before initiating
 any underlying `npm` commands.
 
