@@ -47,6 +47,7 @@ The basics:
     -f, --filter <pattern>     File glob patterns to filter to
     --no-colors                Disable colors in the outputted diff
     -h, --help                 output usage information
+
   Examples:
 
     # Compare (old) npm registry `latest` version vs. (new) local `process.cwd()`
