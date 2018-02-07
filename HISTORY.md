@@ -7,6 +7,11 @@ History
 * XXX
 -->
 
+## 0.4.1
+
+* Add `--filter` option.
+  [#12](https://github.com/FormidableLabs/publish-diff/pull/12)
+
 ## 0.4.0
 
 * Expand any module names starting with `.`, `/`, or OS-specific path slash to
