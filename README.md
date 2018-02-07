@@ -37,14 +37,16 @@ The basics:
 
   Preview npm publish changes.
 
+
   Options:
 
-    -h, --help                 output usage information
     -V, --version              output the version number
     -o, --old <package>        Old package to diff (default `<package>@latest`)
     -n, --new <package>        New package to diff (default `process.cwd()`)
     -r, --registry <registry>  The npm registry to diff the package against
+    -f, --filter <pattern>     File glob patterns to filter to
     --no-colors                Disable colors in the outputted diff
+    -h, --help                 output usage information
 
   Examples:
 
@@ -56,6 +58,12 @@ The basics:
 
     # Compare (old) git tag/hash vs. (new) git tag/hash
     $ publish-diff -o FormidableLabs/rowdy#v0.4.0 -n FormidableLabs/rowdy#v0.5.0
+
+    # Filter differences to only lib and src directories
+    $ publish-diff -o radium@0.21.1 -n radium@0.21.2 --filter='{lib,src}/**'
+
+    # Filter differences to ignore dist directory
+    $ publish-diff -o radium@0.21.1 -n radium@0.21.2 --filter='!dist/**'
 ```
 
 ### Local Diffs
