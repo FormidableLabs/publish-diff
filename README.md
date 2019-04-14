@@ -19,6 +19,10 @@ to the files sent to the `npm` registry.
 intend to publish with convenient, **git-style diffs** against the `npm`
 registry from your local project.
 
+### Maintenance Status: Stable
+
+Formidable is not planning to develop any new features for this project. We are still responding to bug reports and security concerns. We are still welcoming PRs for this project, but PRs that include new features should be small and easy to integrate and should not include breaking changes.
+
 ## Installation
 
 Install this package as a global dependency.
