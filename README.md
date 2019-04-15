@@ -1,5 +1,8 @@
 [![Travis Status][trav_img]][trav_site]
+[![Maintenance Status][maintenance-image]](#maintenance-status)
 <!--[![Coverage Status][cov_img]][cov_site]-->
+
+
 
 Publish Diff
 ============
@@ -18,6 +21,7 @@ to the files sent to the `npm` registry.
 `publish-diff` offers the piece of mind that you will publish exactly what you
 intend to publish with convenient, **git-style diffs** against the `npm`
 registry from your local project.
+
 
 ## Installation
 
@@ -218,7 +222,12 @@ directory. To compensate for this behavior, if a `${process.cwd()}/.npmrc` file
 is found, that is _also_ copied to the temporary directory before initiating
 any underlying `npm` commands.
 
+### Maintenance Status
+
+**Stable:** Formidable is not planning to develop any new features for this project. We are still responding to bug reports and security concerns. We are still welcoming PRs for this project, but PRs that include new features should be small and easy to integrate and should not include breaking changes.
+
 [trav_img]: https://api.travis-ci.org/FormidableLabs/publish-diff.svg
 [trav_site]: https://travis-ci.org/FormidableLabs/publish-diff
 [cov_img]: https://img.shields.io/coveralls/FormidableLabs/publish-diff.svg
 [cov_site]: https://coveralls.io/r/FormidableLabs/publish-diff
+[maintenance-image]: https://img.shields.io/badge/maintenance-stable-blue.svg
