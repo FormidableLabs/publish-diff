@@ -226,8 +226,8 @@ any underlying `npm` commands.
 
 **Stable:** Formidable is not planning to develop any new features for this project. We are still responding to bug reports and security concerns. We are still welcoming PRs for this project, but PRs that include new features should be small and easy to integrate and should not include breaking changes.
 
-[trav_img]: https://api.travis-ci.org/FormidableLabs/publish-diff.svg
-[trav_site]: https://travis-ci.org/FormidableLabs/publish-diff
+[trav_img]: https://api.travis-ci.com/FormidableLabs/publish-diff.svg
+[trav_site]: https://travis-ci.com/FormidableLabs/publish-diff
 [cov_img]: https://img.shields.io/coveralls/FormidableLabs/publish-diff.svg
 [cov_site]: https://coveralls.io/r/FormidableLabs/publish-diff
 [maintenance-image]: https://img.shields.io/badge/maintenance-stable-blue.svg
